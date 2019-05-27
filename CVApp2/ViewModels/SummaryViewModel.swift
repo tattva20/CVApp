@@ -16,7 +16,7 @@ class SummaryViewModel {
     func setwithJSON(completion: @escaping (Person) -> Void) {
         QueryAPI.shared.setServiceURL(service: .summary)
         QueryAPI.shared.fetchData(failure: { failure in 
-            
+            print(failure)
         }, completion: { data in
             do {
                 let parsedJSON = try JSONDecoder().decode(Person.self, from: data)

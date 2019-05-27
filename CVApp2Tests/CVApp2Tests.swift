@@ -73,7 +73,7 @@ class CVApp2Tests: XCTestCase {
             expectation.fulfill()
         }
         
-        QueryAPI.shared.setServiceURL(service: .workExperience)
+        QueryAPI.shared.setServiceURL(service: .achievements)
         QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
 }
