@@ -18,7 +18,7 @@ class CVApp2Tests: XCTestCase {
     // MARK: - QueryAPITests
     
     func testSummaryResponse() {
-        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify summary JSON response", comment: ""))
         
         let failClosure: (Error) -> () = { error in
             XCTFail()
@@ -48,7 +48,7 @@ class CVApp2Tests: XCTestCase {
     }
     
     func testExperienceResponse() {
-        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify skills JSON response", comment: ""))
         
         let failClosure: (Error) -> () = { error in
             XCTFail()
@@ -63,7 +63,7 @@ class CVApp2Tests: XCTestCase {
     }
     
     func testAchievementsResponse() {
-        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify experience JSON response", comment: ""))
         
         let failClosure: (Error) -> () = { error in
             XCTFail()
