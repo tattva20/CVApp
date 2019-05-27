@@ -12,23 +12,68 @@ import XCTest
 class CVApp2Tests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        continueAfterFailure = false
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    // MARK: - QueryAPITests
+    
+    func testSummaryResponse() {
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        
+        let failClosure: (Error) -> () = { error in
+            XCTFail()
         }
+        
+        let successClosure: (Data) -> () = { _ in
+            expectation.fulfill()
+        }
+        
+        QueryAPI.shared.setServiceURL(service: .summary)
+        QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
-
+    
+    func testSkillsResponse() {
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        
+        let failClosure: (Error) -> () = { error in
+            XCTFail()
+        }
+        
+        let successClosure: (Data) -> () = { _ in
+            expectation.fulfill()
+        }
+        
+        QueryAPI.shared.setServiceURL(service: .skills)
+        QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
+    }
+    
+    func testExperienceResponse() {
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        
+        let failClosure: (Error) -> () = { error in
+            XCTFail()
+        }
+        
+        let successClosure: (Data) -> () = { _ in
+            expectation.fulfill()
+        }
+        
+        QueryAPI.shared.setServiceURL(service: .workExperience)
+        QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
+    }
+    
+    func testAchievementsResponse() {
+        let expectation = XCTestExpectation(description: NSLocalizedString("Verify profile JSON response", comment: ""))
+        
+        let failClosure: (Error) -> () = { error in
+            XCTFail()
+        }
+        
+        let successClosure: (Data) -> () = { _ in
+            expectation.fulfill()
+        }
+        
+        QueryAPI.shared.setServiceURL(service: .workExperience)
+        QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
+    }
 }

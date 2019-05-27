@@ -8,27 +8,82 @@
 
 import XCTest
 
+// MARK: - CVApp2UITests class
+
 class CVApp2UITests: XCTestCase {
+    
+    let app = XCUIApplication()
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    // MARK: - Tests methods
+    func testMinimumSectionsSummary() {
+        
+        let app = XCUIApplication()
+        XCUIApplication().tables/*@START_MENU_TOKEN@*/.staticTexts["Professional Summary"]/*[[".cells.staticTexts[\"Professional Summary\"]",".staticTexts[\"Professional Summary\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertTrue(app.staticTexts["Name"].exists)
+        XCTAssertTrue(app.staticTexts["Last Name"].exists)
+        XCTAssertTrue(app.staticTexts["Email"].exists)
+        XCTAssertTrue(app.staticTexts["Phone"].exists)
+        XCTAssertTrue(app.staticTexts["Degree"].exists)
+        XCTAssertTrue(app.staticTexts["Summary"].exists)
     }
-
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testMinimumSectionsSkills() {
+        
+        let app = XCUIApplication()
+        XCUIApplication().tables.staticTexts["Topics of Knowledge"].tap()
+        XCTAssertTrue(app.staticTexts["Skills"].exists)
     }
-
+    
+    func testMinimumSectionsExperience() {
+        
+        let app = XCUIApplication()
+        XCUIApplication().tables.staticTexts["Past Experience"].tap()
+        XCTAssertTrue(app.staticTexts["Company"].exists)
+        XCTAssertTrue(app.staticTexts["Position"].exists)
+        XCTAssertTrue(app.staticTexts["Website"].exists)
+        XCTAssertTrue(app.staticTexts["StartDate"].exists)
+        XCTAssertTrue(app.staticTexts["EndDate"].exists)
+        XCTAssertTrue(app.staticTexts["Summary"].exists)
+        XCTAssertTrue(app.staticTexts["Highlights"].exists)
+    }
+    
+    func testMinimumSectionsAchievements() {
+        
+        let app = XCUIApplication()
+        XCUIApplication().tables.staticTexts["Achievements"].tap()
+        XCTAssertTrue(app.staticTexts["Achievements"].exists)
+    }
+    
+    func testMinimumCellsCountSummary() {
+        let app = XCUIApplication()
+        XCUIApplication().tables/*@START_MENU_TOKEN@*/.staticTexts["Professional Summary"]/*[[".cells.staticTexts[\"Professional Summary\"]",".staticTexts[\"Professional Summary\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let numberOfCells = app.tables.cells.count
+        XCTAssertGreaterThanOrEqual(numberOfCells, 1)
+    }
+    
+    func testMinimumCellsCountSkills() {
+        let app = XCUIApplication()
+        XCUIApplication().tables.staticTexts["Topics of Knowledge"].tap()
+        let numberOfCells = app.tables.cells.count
+        XCTAssertGreaterThanOrEqual(numberOfCells, 1)
+    }
+    
+    func testMinimumCellsCountExperience() {
+        let app = XCUIApplication()
+        XCUIApplication().tables.staticTexts["Past Experience"].tap()
+        let numberOfCells = app.tables.cells.count
+        XCTAssertGreaterThanOrEqual(numberOfCells, 7)
+    }
+    
+    func testMinimumCellsCountAchievements() {
+        let app = XCUIApplication()
+        XCUIApplication().tables.staticTexts["Achievements"].tap()
+        let numberOfCells = app.tables.cells.count
+        XCTAssertGreaterThanOrEqual(numberOfCells, 1)
+    }
 }
