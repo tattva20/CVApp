@@ -41,9 +41,7 @@ final class QueryAPI {
         }
     }
     
-    let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
-    var data: Data?
     private(set)var endPoint: URL?
     
     
