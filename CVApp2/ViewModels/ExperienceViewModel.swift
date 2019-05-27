@@ -13,10 +13,10 @@ import Foundation
 
 class ExperienceViewModel {
 
-    func setWithJSON(completion: @escaping ([Experience]) -> Void) {
+    func setWithJSON(completion: @escaping ([Experience]) -> Void, error: @escaping (Error) -> Void) {
         QueryAPI.shared.setServiceURL(service: .workExperience)
         QueryAPI.shared.fetchData(failure: { failure in
-            print(failure)
+            error(failure)
         }, completion: { data in
             do {
                 let parsedJSON = try JSONDecoder().decode([Experience].self, from: data)

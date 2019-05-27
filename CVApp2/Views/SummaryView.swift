@@ -29,7 +29,7 @@ class SummaryView: UIViewController {
     
     // Uses viewModel to fetch all data from services and populate view's objects
     func fillTextLabelsAndViews() {
-        viewModel.setwithJSON(completion: { person in
+        viewModel.setWithJSON(completion: { person in
             DispatchQueue.main.async {
                 self.nameLabel.text = person.name
                 self.lastNameLabel.text = person.lastName
@@ -38,6 +38,10 @@ class SummaryView: UIViewController {
                 self.degreeLabel.text = person.degree
                 self.summaryTextView.text = person.summary
             }
+        }, error: { failure in
+            let alert = UIAlertController(title: "Error", message: failure.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         })
     }
 }

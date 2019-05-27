@@ -28,6 +28,10 @@ class SkillsView: UIViewController {
             DispatchQueue.main.async {
                 self.skillsTextView.text = skills.skills
             }
+        }, error: { failure in
+            let alert = UIAlertController(title: "Error", message: failure.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         })
     }
 }

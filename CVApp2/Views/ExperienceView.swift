@@ -49,6 +49,10 @@ class ExperienceView: UITableViewController {
                 cell.summaryTextView.text = experiences[indexPath.row].summary
                 cell.highLightsTextView.text = experiences[indexPath.row].highlights
             }
+        }, error: { failure in
+            let alert = UIAlertController(title: "Error", message: failure.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         })
         return cell
     }

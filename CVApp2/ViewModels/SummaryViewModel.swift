@@ -13,15 +13,15 @@ import Foundation
 
 class SummaryViewModel {
     
-    func setwithJSON(completion: @escaping (Person) -> Void) {
+    func setWithJSON(completion: @escaping (Person) -> Void, error: @escaping (Error) -> Void) {
         QueryAPI.shared.setServiceURL(service: .summary)
-        QueryAPI.shared.fetchData(failure: { failure in 
-            print(failure)
+        QueryAPI.shared.fetchData(failure: { failure in
+            error(failure)
         }, completion: { data in
             do {
                 let parsedJSON = try JSONDecoder().decode(Person.self, from: data)
                 completion(parsedJSON)
-            } catch {
+            } catch let error {
                 print(error)
             }
             return

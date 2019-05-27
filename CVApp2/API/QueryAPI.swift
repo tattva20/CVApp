@@ -10,10 +10,10 @@ import Foundation
 
 // MARK: - ServiceEndPoints
 private struct Endpoints {
-    let summaryEndpoint = "https://api.myjson.com/bins/1egodo"
-    let workExperienceEndpoint = "https://api.myjson.com/bins/6gqrw"
-    let skillsEndpoint = "https://api.myjson.com/bins/1bfd70"
-    let achievementsEndpoint = "https://api.myjson.com/bins/r1tv4"
+    let summary = "SummaryURL"
+    let workExperience = "ExperienceURL"
+    let skillsEndpoint = "SkillsURL"
+    let achievementsEndpoint = "AchievementsURL"
 }
 
 // MARK: - Servicestypes
@@ -27,12 +27,18 @@ public enum Services {
 // MARK: - QueryAPI class
 // This singleton will fetch the data from the desired services endPoint and return it as a closure for the viewModels.
 
-public class QueryAPI {
+final class QueryAPI {
     
+    // MARK: - Attributes
+    private var plist: [AnyHashable: Any]?
+    
+    // MARK: - Singleton stuff
     static let shared = QueryAPI()
     
     private init () {
-        
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            self.plist = NSDictionary(contentsOfFile: path) as? [AnyHashable: Any]
+        }
     }
     
     let defaultSession = URLSession(configuration: .default)
@@ -46,23 +52,27 @@ public class QueryAPI {
 
         switch service {
         case .summary:
-            guard let url = URL(string: Endpoints().summaryEndpoint) else {
+            guard let string = self.plist?[Endpoints().summary] as? String,
+                let url = URL(string: string) else {
                 return
             }
             endPoint = url
         case .workExperience:
-            guard let url = URL(string: Endpoints().workExperienceEndpoint) else {
+            guard let string = self.plist?[Endpoints().workExperience] as? String,
+                  let url = URL(string: string) else {
                 return
             }
             endPoint = url
         case .skills:
-            guard let url = URL(string: Endpoints().skillsEndpoint) else {
-                return
+            guard let string = self.plist?[Endpoints().skillsEndpoint] as? String,
+                let url = URL(string: string) else {
+                    return
             }
             endPoint = url
         case .achievements:
-            guard let url = URL(string: Endpoints().achievementsEndpoint) else {
-                return
+            guard let string = self.plist?[Endpoints().achievementsEndpoint] as? String,
+                let url = URL(string: string) else {
+                    return
             }
             endPoint = url
         }

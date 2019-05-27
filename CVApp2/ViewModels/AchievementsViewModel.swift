@@ -13,10 +13,10 @@ import Foundation
 
 class AchievementsViewModel {
     
-    func setWithJSON(completion: @escaping (Achievements) -> Void) {
+    func setWithJSON(completion: @escaping (Achievements) -> Void, error: @escaping (Error) -> Void) {
         QueryAPI.shared.setServiceURL(service: .achievements)
         QueryAPI.shared.fetchData(failure: { failure in
-            print(failure)
+            error(failure)
         }, completion: { data in
             do {
                 let parsedJSON = try JSONDecoder().decode(Achievements.self, from: data)

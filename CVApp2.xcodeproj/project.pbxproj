@@ -519,9 +519,11 @@
 		6ECCEFFD229B532B00A1585E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ACHIEVEMENTS_URL = "https://api.myjson.com/bins/r1tv4";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69P89ZNU5J;
+				EXPERIENCE_URL = "https://api.myjson.com/bins/6gqrw";
 				INFOPLIST_FILE = CVApp2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,6 +531,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = octavio.rojas.CVApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKILLS_URL = "https://api.myjson.com/bins/1bfd70";
+				SUMMARY_URL = "https://api.myjson.com/bins/1egodo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -537,9 +541,11 @@
 		6ECCEFFE229B532B00A1585E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ACHIEVEMENTS_URL = "https://api.myjson.com/bins/r1tv4";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69P89ZNU5J;
+				EXPERIENCE_URL = "https://api.myjson.com/bins/6gqrw";
 				INFOPLIST_FILE = CVApp2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,6 +553,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = octavio.rojas.CVApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKILLS_URL = "https://api.myjson.com/bins/1bfd70";
+				SUMMARY_URL = "https://api.myjson.com/bins/1egodo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

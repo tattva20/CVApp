@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>AchievementsURL</key>
+    <string>$(ACHIEVEMENTS_URL)</string>
+    <key>ExperienceURL</key>
+    <string>$(EXPERIENCE_URL)</string>
+    <key>SkillsURL</key>
+    <string>$(SKILLS_URL)</string>
+    <key>SummaryURL</key>
+    <string>$(SUMMARY_URL)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
