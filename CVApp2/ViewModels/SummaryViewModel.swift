@@ -21,7 +21,7 @@ class SummaryViewModel {
             do {
                 let parsedJSON = try JSONDecoder().decode(Person.self, from: data)
                 completion(parsedJSON)
-            } catch let error {
+            } catch {
                 print(error)
             }
             return

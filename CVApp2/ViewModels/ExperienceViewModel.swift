@@ -24,6 +24,7 @@ class ExperienceViewModel {
             } catch {
                 print(error)
             }
+            return 
         })
     }
 }

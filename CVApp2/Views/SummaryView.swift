@@ -26,7 +26,7 @@ class SummaryView: UIViewController {
         super.viewDidLoad()
         fillTextLabelsAndViews()
     }
-    
+        
     // Uses viewModel to fetch all data from services and populate view's objects
     func fillTextLabelsAndViews() {
         do {
