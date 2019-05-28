@@ -13,12 +13,12 @@ import Foundation
 
 class SummaryViewModel {
     
-    var onErrorHandling : ((Error) -> Void)?
+    var dataFetchError : ((Error) -> Void)?
     
     func setWithJSON(completion: @escaping (Person) -> Void, error: @escaping (Error) -> Void) throws {
         
         let failure: (Error) -> Void = { error in
-            self.onErrorHandling?(error)
+            self.dataFetchError?(error)
         }
         
         let completion: (Data) -> Void = { data in
@@ -27,13 +27,13 @@ class SummaryViewModel {
                 let parsedJSON = try JSONDecoder().decode(Person.self, from: data)
                 completion(parsedJSON)
             } catch {
-                self.onErrorHandling?(error)
+                self.dataFetchError?(error)
             }
             return
         }
         
         QueryAPI.shared.setServiceURL(.summary)
         do { try QueryAPI.shared.fetchData(failure: failure, completion: completion) }
-        catch { self.onErrorHandling?(error) }
+        catch { self.dataFetchError?(error) }
     }
 }

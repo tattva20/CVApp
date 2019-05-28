@@ -13,12 +13,12 @@ import Foundation
 
 class SkillsViewModel {
     
-    var onErrorHandling : ((Error) -> Void)?
+    var dataFetchError : ((Error) -> Void)?
     
     func setWithJSON(completion: @escaping (Skills) -> Void, error: @escaping (Error) -> Void) throws {
         
         let failure: (Error) -> Void = { error in
-            self.onErrorHandling?(error)
+            self.dataFetchError?(error)
         }
         
         let completion: (Data) -> Void = { data in
@@ -27,13 +27,13 @@ class SkillsViewModel {
                 let parsedJSON = try JSONDecoder().decode(Skills.self, from: data)
                 completion(parsedJSON)
             } catch {
-                self.onErrorHandling?(error)
+                self.dataFetchError?(error)
             }
             return
         }
         
         QueryAPI.shared.setServiceURL(.skills)
         do { try QueryAPI.shared.fetchData(failure: failure, completion: completion) }
-        catch { self.onErrorHandling?(error)  }
+        catch { self.dataFetchError?(error) }
     }
 }

@@ -13,12 +13,12 @@ import Foundation
 
 class ExperienceViewModel {
     
-    var onErrorHandling : ((Error) -> Void)?
+    var dataFetchError : ((Error) -> Void)?
     
     func setWithJSON(completion: @escaping ([Experience]) -> Void, error: @escaping (Error) -> Void) throws {
         
         let failure: (Error) -> Void = { error in
-            self.onErrorHandling?(error)
+            self.dataFetchError?(error)
         }
         
         let completion: (Data) -> Void = { data in
@@ -27,13 +27,13 @@ class ExperienceViewModel {
                 let parsedJSON = try JSONDecoder().decode([Experience].self, from: data)
                 completion(parsedJSON)
             } catch {
-                self.onErrorHandling?(error)
+                self.dataFetchError?(error)
             }
             return
         }
         
         QueryAPI.shared.setServiceURL(.workExperience)
         do { try QueryAPI.shared.fetchData(failure: failure, completion: completion) }
-        catch { self.onErrorHandling?(error) }
+        catch { self.dataFetchError?(error) }
     }
 }
