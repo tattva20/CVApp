@@ -11,7 +11,7 @@ import Foundation
 // MARK: - ExperienceViewModel class
 // This class is the viewModel for the ExperienceView it uses queryAPI to fetch the data, then it converts the data to JSON and returns it to the view in a closure.
 
-class ExperienceViewModel: ViewModelProtocol {
+struct ExperienceViewModel: ViewModelProtocol {
     var dataFetchError : ((Error) -> Void)?
     
 }

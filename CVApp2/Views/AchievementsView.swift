@@ -13,7 +13,7 @@ import UIKit
 
 class AchievementsView: UIViewController {
     
-    private let viewModel = AchievementsViewModel()
+    private var viewModel = AchievementsViewModel()
     
     @IBOutlet weak var achievementsTextView: UITextView!
     

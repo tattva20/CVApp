@@ -25,7 +25,7 @@ class ExperienceViewCell: UITableViewCell {
 
 class ExperienceView: UITableViewController {
     
-    private let viewModel = ExperienceViewModel()
+    private var viewModel = ExperienceViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
