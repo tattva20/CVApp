@@ -51,6 +51,7 @@ class SummaryView: UIViewController {
                 self.handleError(error)
             }
         }
+            
         catch { self.handleError(error) }
     }
 }
