@@ -25,7 +25,7 @@ class AchievementsView: UIViewController {
     fileprivate func fillTextLabelsAndViews() {
         do {
             try viewModel.setWithJSON(completion: { achievements in
-                DispatchQueue.main.sync { [ weak self ] in
+                DispatchQueue.main.async { [ weak self ] in
                     self?.achievementsTextView.text = achievements.achievements
                 }
             }, error: { failure in

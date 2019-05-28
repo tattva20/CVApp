@@ -42,7 +42,7 @@ class ExperienceView: UITableViewController {
         
         do {
             try viewModel.setWithJSON(completion: { experiences in
-                DispatchQueue.main.sync { [ weak cell ] in 
+                DispatchQueue.main.async { [ weak cell ] in 
                     cell?.companyLabel.text = experiences[indexPath.row].company
                     cell?.positionLabel.text = experiences[indexPath.row].position
                     cell?.websiteLabel.text = experiences[indexPath.row].website
