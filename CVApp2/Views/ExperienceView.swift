@@ -39,21 +39,24 @@ class ExperienceView: UITableViewController {
     // Uses viewModel to fetch all data from services and populate cells.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier") as! ExperienceViewCell
-        viewModel.setWithJSON(completion: { experiences in
-            DispatchQueue.main.async {
-                cell.companyLabel.text = experiences[indexPath.row].company
-                cell.positionLabel.text = experiences[indexPath.row].position
-                cell.websiteLabel.text = experiences[indexPath.row].website
-                cell.startDateLabel.text = experiences[indexPath.row].startDate
-                cell.endDateLabel.text = experiences[indexPath.row].endDate
-                cell.summaryTextView.text = experiences[indexPath.row].summary
-                cell.highLightsTextView.text = experiences[indexPath.row].highlights
-            }
-        }, error: { failure in
-            let alert = UIAlertController(title: "Error", message: failure.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        })
+        
+        do {
+            try viewModel.setWithJSON(completion: { experiences in
+                DispatchQueue.main.sync { [ weak cell ] in 
+                    cell?.companyLabel.text = experiences[indexPath.row].company
+                    cell?.positionLabel.text = experiences[indexPath.row].position
+                    cell?.websiteLabel.text = experiences[indexPath.row].website
+                    cell?.startDateLabel.text = experiences[indexPath.row].startDate
+                    cell?.endDateLabel.text = experiences[indexPath.row].endDate
+                    cell?.summaryTextView.text = experiences[indexPath.row].summary
+                    cell?.highLightsTextView.text = experiences[indexPath.row].highlights
+                }
+            }, error: { failure in
+                self.handleError(error: failure)
+            })
+        } catch {
+            self.handleError(error: error)
+        }
         return cell
     }
 }

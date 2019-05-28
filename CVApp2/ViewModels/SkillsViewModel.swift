@@ -13,7 +13,7 @@ import Foundation
 
 class SkillsViewModel {
     
-    func setWithJSON(completion: @escaping (Skills) -> Void, error: @escaping (Error) -> Void) {
+    func setWithJSON(completion: @escaping (Skills) -> Void, error: @escaping (Error) -> Void) throws {
         QueryAPI.shared.setServiceURL(service: .skills)
         QueryAPI.shared.fetchData(failure: { failure in 
             error(failure)

@@ -13,7 +13,7 @@ import Foundation
 
 class ExperienceViewModel {
 
-    func setWithJSON(completion: @escaping ([Experience]) -> Void, error: @escaping (Error) -> Void) {
+    func setWithJSON(completion: @escaping ([Experience]) -> Void, error: @escaping (Error) -> Void) throws {
         QueryAPI.shared.setServiceURL(service: .workExperience)
         QueryAPI.shared.fetchData(failure: { failure in
             error(failure)

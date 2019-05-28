@@ -24,14 +24,16 @@ class SkillsView: UIViewController {
     
     // Uses viewModel to fetch all data from services and populate view's objects
     fileprivate func fillTextLabelsAndViews() {
-        viewModel.setWithJSON(completion: { skills in
-            DispatchQueue.main.async {
-                self.skillsTextView.text = skills.skills
-            }
-        }, error: { failure in
-            let alert = UIAlertController(title: "Error", message: failure.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        })
+        do {
+            try viewModel.setWithJSON(completion: { skills in
+                DispatchQueue.main.async { [ weak self ] in
+                    self?.skillsTextView.text = skills.skills
+                }
+            }, error: { failure in
+                self.handleError(error: failure)
+            })
+        } catch {
+            self.handleError(error: error)
+        }
     }
 }
