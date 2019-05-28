@@ -77,7 +77,7 @@ final class QueryAPI {
     }
     
     // Fetches data for viewmodels and returns it as a closure
-    func fetchData(failure: @escaping (Error) -> (), completion: @escaping (Data) -> ()) throws {
+    func fetchData(failure: @escaping (Error) -> (), completion: @escaping (Data) -> ()) {
         
         guard let url = self.endPoint else {
             return

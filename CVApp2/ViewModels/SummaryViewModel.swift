@@ -15,7 +15,7 @@ class SummaryViewModel {
     
     var dataFetchError : ((Error) -> Void)?
     
-    func setWithJSON(completion: @escaping (Person) -> Void, error: @escaping (Error) -> Void) throws {
+    func setWithJSON(completion: @escaping (Person) -> Void, error: @escaping (Error) -> Void)  {
         
         let failure: (Error) -> Void = { error in
             self.dataFetchError?(error)
@@ -33,7 +33,6 @@ class SummaryViewModel {
         }
         
         QueryAPI.shared.setServiceURL(.summary)
-        do { try QueryAPI.shared.fetchData(failure: failure, completion: completion) }
-        catch { self.dataFetchError?(error) }
+        QueryAPI.shared.fetchData(failure: failure, completion: completion)
     }
 }

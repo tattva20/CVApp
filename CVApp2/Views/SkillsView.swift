@@ -35,13 +35,9 @@ class SkillsView: UIViewController {
             }
         }
         
-        do {
-            try viewModel.setWithJSON(completion: completion, error: error)
-            self.viewModel.dataFetchError = { error in
-                self.handleError(error)
-            }
+        viewModel.setWithJSON(completion: completion, error: error)
+        self.viewModel.dataFetchError = { error in
+            self.handleError(error)
         }
-            
-        catch { self.handleError(error) }
     }
 }
