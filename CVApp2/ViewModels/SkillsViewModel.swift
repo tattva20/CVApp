@@ -11,28 +11,7 @@ import Foundation
 // MARK: - SkillsViewModel class
 // This class is the viewModel for the SkillsView it uses queryAPI to the fetch data, then it converts the data to JSON and returns it to the view in a closure.
 
-class SkillsViewModel {
-    
+class SkillsViewModel: ViewModelProtocol {
     var dataFetchError : ((Error) -> Void)?
     
-    func setWithJSON(completion: @escaping (Skills) -> Void, error: @escaping (Error) -> Void)  {
-        
-        let failure: (Error) -> Void = { error in
-            self.dataFetchError?(error)
-        }
-        
-        let completion: (Data) -> Void = { data in
-            
-            do {
-                let parsedJSON = try JSONDecoder().decode(Skills.self, from: data)
-                completion(parsedJSON)
-            } catch {
-                self.dataFetchError?(error)
-            }
-            return
-        }
-        
-        QueryAPI.shared.setServiceURL(.skills)
-        QueryAPI.shared.fetchData(failure: failure, completion: completion)
-    }
 }

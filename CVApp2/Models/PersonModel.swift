@@ -11,6 +11,6 @@ import Foundation
 // MARK: - PersonModel class
 // This class contains the Person model used by the SummaryViewModel to decode it's data from JSON.
 
-struct Person: Codable {
+struct Person: Decodable {
     let name, lastName, email, phone, degree, summary: String
 }

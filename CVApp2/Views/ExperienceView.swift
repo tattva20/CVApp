@@ -56,7 +56,7 @@ class ExperienceView: UITableViewController {
             }
         }
         
-        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.setWithJSON(completion: completion, error: error, service: .workExperience)
         self.viewModel.dataFetchError = { error in
             self.handleError(error)
         }
