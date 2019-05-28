@@ -52,10 +52,10 @@ class ExperienceView: UITableViewController {
                     cell?.highLightsTextView.text = experiences[indexPath.row].highlights
                 }
             }, error: { failure in
-                self.handleError(error: failure)
+                self.handleError(failure)
             })
         } catch {
-            self.handleError(error: error)
+            self.handleError(error)
         }
         return cell
     }

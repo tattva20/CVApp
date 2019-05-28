@@ -40,10 +40,10 @@ class SummaryView: UIViewController {
                     self?.summaryTextView.text = person.summary
                 }
             }, error: { failure in
-                self.handleError(error: failure)
+                self.handleError(failure)
             })
         } catch {
-            self.handleError(error: error)
+            self.handleError(error)
         }
     }
 }

@@ -29,10 +29,10 @@ class AchievementsView: UIViewController {
                     self?.achievementsTextView.text = achievements.achievements
                 }
             }, error: { failure in
-                self.handleError(error: failure)
+                self.handleError(failure)
             })
         } catch {
-            self.handleError(error: error)
+            self.handleError(error)
         }
     }
 }

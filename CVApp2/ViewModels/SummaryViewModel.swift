@@ -14,7 +14,7 @@ import Foundation
 class SummaryViewModel {
     
     func setWithJSON(completion: @escaping (Person) -> Void, error: @escaping (Error) -> Void) throws {
-        QueryAPI.shared.setServiceURL(service: .summary)
+        QueryAPI.shared.setServiceURL(.summary)
         QueryAPI.shared.fetchData(failure: { failure in
             error(failure)
         }, completion: { data in

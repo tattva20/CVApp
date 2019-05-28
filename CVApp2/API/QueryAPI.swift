@@ -46,7 +46,7 @@ final class QueryAPI {
     
     
     // Sets the correct url for the desired service
-    func setServiceURL(service: Services) {
+    func setServiceURL(_ service: Services) {
 
         switch service {
         case .summary:

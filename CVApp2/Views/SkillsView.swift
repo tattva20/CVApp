@@ -30,10 +30,10 @@ class SkillsView: UIViewController {
                     self?.skillsTextView.text = skills.skills
                 }
             }, error: { failure in
-                self.handleError(error: failure)
+                self.handleError(failure)
             })
         } catch {
-            self.handleError(error: error)
+            self.handleError(error)
         }
     }
 }

@@ -15,7 +15,7 @@ protocol ViewProtocol {
 
 extension UIViewController: ViewProtocol {
     
-    internal func handleError(error: Error) {
+    internal func handleError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
