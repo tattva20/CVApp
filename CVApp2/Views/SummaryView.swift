@@ -45,7 +45,8 @@ class SummaryView: UIViewController {
             }
         }
         
-        do { try viewModel.setWithJSON(completion: completion, error: error)
+        do {
+            try viewModel.setWithJSON(completion: completion, error: error)
             self.viewModel.dataFetchError = { error in
                 self.handleError(error)
             }

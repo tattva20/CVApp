@@ -90,7 +90,6 @@ final class QueryAPI {
                 response.statusCode == 200 else {
                     guard let error = error else {
                         return
-                        
                     }
                     failure(error)
                     return
