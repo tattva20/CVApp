@@ -76,4 +76,72 @@ class CVApp2Tests: XCTestCase {
         QueryAPI.shared.setServiceURL(.achievements)
         QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
+    
+    func testSetWithJSONSummaryViewModel() {
+        let viewModel = SummaryViewModel()
+        
+        let error: (Error) -> Void = { error in
+             XCTFail()
+        }
+        
+        let completion: (Person) -> Void = { person in
+            print(person)
+        }
+        
+        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.dataFetchError = { error in
+             XCTFail()
+        }
+    }
+    
+    func testSetWithJSONSkillsViewModel() {
+        let viewModel = SkillsViewModel()
+        
+        let error: (Error) -> Void = { error in
+            XCTFail()
+        }
+        
+        let completion: (Skills) -> Void = { person in
+            print(person)
+        }
+        
+        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.dataFetchError = { error in
+            XCTFail()
+        }
+    }
+    
+    func testSetWithJSONExperienceViewModel() {
+        let viewModel = ExperienceViewModel()
+        
+        let error: (Error) -> Void = { error in
+            XCTFail()
+        }
+        
+        let completion: ([Experience]) -> Void = { person in
+            print(person)
+        }
+        
+        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.dataFetchError = { error in
+            XCTFail()
+        }
+    }
+    
+    func testSetWithJSONAchievementsViewModel() {
+        let viewModel = AchievementsViewModel()
+        
+        let error: (Error) -> Void = { error in
+            XCTFail()
+        }
+        
+        let completion: (Achievements) -> Void = { person in
+            print(person)
+        }
+        
+        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.dataFetchError = { error in
+            XCTFail()
+        }
+    }
 }
