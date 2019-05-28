@@ -40,23 +40,28 @@ class ExperienceView: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier") as! ExperienceViewCell
         
-        do {
-            try viewModel.setWithJSON(completion: { experiences in
-                DispatchQueue.main.async { [ weak cell ] in 
-                    cell?.companyLabel.text = experiences[indexPath.row].company
-                    cell?.positionLabel.text = experiences[indexPath.row].position
-                    cell?.websiteLabel.text = experiences[indexPath.row].website
-                    cell?.startDateLabel.text = experiences[indexPath.row].startDate
-                    cell?.endDateLabel.text = experiences[indexPath.row].endDate
-                    cell?.summaryTextView.text = experiences[indexPath.row].summary
-                    cell?.highLightsTextView.text = experiences[indexPath.row].highlights
-                }
-            }, error: { failure in
-                self.handleError(failure)
-            })
-        } catch {
+        let error: (Error) -> Void = { error in
             self.handleError(error)
         }
+        
+        let completion: ([Experience]) -> Void = { experiences in
+            DispatchQueue.main.async { [ weak cell ] in
+                cell?.companyLabel.text = experiences[indexPath.row].company
+                cell?.positionLabel.text = experiences[indexPath.row].position
+                cell?.websiteLabel.text = experiences[indexPath.row].website
+                cell?.startDateLabel.text = experiences[indexPath.row].startDate
+                cell?.endDateLabel.text = experiences[indexPath.row].endDate
+                cell?.summaryTextView.text = experiences[indexPath.row].summary
+                cell?.highLightsTextView.text = experiences[indexPath.row].highlights
+            }
+        }
+        
+        do { try viewModel.setWithJSON(completion: completion, error: error)
+            self.viewModel.onErrorHandling = { error in
+                self.handleError(error)
+            }
+        }
+        catch { self.handleError(error) }
         return cell
     }
 }

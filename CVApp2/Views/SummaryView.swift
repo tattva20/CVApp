@@ -29,22 +29,28 @@ class SummaryView: UIViewController {
         
     // Uses viewModel to fetch all data from services and populate view's objects
     func fillTextLabelsAndViews() {
-        do {
-            try viewModel.setWithJSON(completion: { person in
-                DispatchQueue.main.async { [ weak self ] in 
-                    self?.nameLabel.text = person.name
-                    self?.lastNameLabel.text = person.lastName
-                    self?.emailLabel.text = person.email
-                    self?.phoneLabel.text = person.phone
-                    self?.degreeLabel.text = person.degree
-                    self?.summaryTextView.text = person.summary
-                }
-            }, error: { failure in
-                self.handleError(failure)
-            })
-        } catch {
+        
+        let error: (Error) -> Void = { error in
             self.handleError(error)
         }
+        
+        let completion: (Person) -> Void = { person in
+            DispatchQueue.main.async { [ weak self ] in
+                self?.nameLabel.text = person.name
+                self?.lastNameLabel.text = person.lastName
+                self?.emailLabel.text = person.email
+                self?.phoneLabel.text = person.phone
+                self?.degreeLabel.text = person.degree
+                self?.summaryTextView.text = person.summary
+            }
+        }
+        
+        do { try viewModel.setWithJSON(completion: completion, error: error)
+            self.viewModel.onErrorHandling = { error in
+                self.handleError(error)
+            }
+        }
+        catch { self.handleError(error) }
     }
 }
 

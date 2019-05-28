@@ -77,25 +77,28 @@ final class QueryAPI {
     }
     
     // Fetches data for viewmodels and returns it as a closure
-    func fetchData(failure: @escaping (Error) -> (), completion: @escaping (Data) -> ()) {
+    func fetchData(failure: @escaping (Error) -> (), completion: @escaping (Data) -> ()) throws {
+        
         guard let url = self.endPoint else {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+        let completionHandler: (Data?, URLResponse?, Error?) -> () = { data, response, error in
             guard error == nil,
-                  let data = data,
-                  let response = response as? HTTPURLResponse,
-                  response.statusCode == 200 else {
+                let data = data,
+                let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
                     guard let error = error else {
                         return
                         
                     }
                     failure(error)
-                    return 
+                    return
             }
             completion(data)
-        })
+        }
+        
+        let task = URLSession.shared.dataTask(with: url, completionHandler: completionHandler)
         task.resume()
     }
 }

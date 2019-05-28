@@ -13,18 +13,27 @@ import Foundation
 
 class AchievementsViewModel {
     
+    var onErrorHandling : ((Error) -> Void)?
+    
     func setWithJSON(completion: @escaping (Achievements) -> Void, error: @escaping (Error) -> Void) throws {
-        QueryAPI.shared.setServiceURL(.achievements)
-        QueryAPI.shared.fetchData(failure: { failure in
-            error(failure)
-        }, completion: { data in
+        
+        let failure: (Error) -> Void = { error in
+            self.onErrorHandling?(error)
+        }
+        
+        let completion: (Data) -> Void = { data in
+            
             do {
                 let parsedJSON = try JSONDecoder().decode(Achievements.self, from: data)
                 completion(parsedJSON)
             } catch {
-                print(error)
+                self.onErrorHandling?(error)
             }
-            return 
-        })
+            return
+        }
+        
+        QueryAPI.shared.setServiceURL(.achievements)
+        do { try QueryAPI.shared.fetchData(failure: failure, completion: completion) }
+        catch { self.onErrorHandling?(error)  }
     }
 }

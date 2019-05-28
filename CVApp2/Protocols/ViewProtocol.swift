@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol ViewProtocol {
-    func handleError(error: Error)
+    func handleError(_ error: Error)
 }
 
 extension UIViewController: ViewProtocol {
@@ -20,5 +20,4 @@ extension UIViewController: ViewProtocol {
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
 }

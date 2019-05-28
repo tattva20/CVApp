@@ -12,6 +12,7 @@ import UIKit
 // This class is the view for AchievmentsViewController it uses SummaryViewModel to retrieve it's data and populate the view's objects with it.
 
 class AchievementsView: UIViewController {
+    
     private let viewModel = AchievementsViewModel()
     
     @IBOutlet weak var achievementsTextView: UITextView!
@@ -23,16 +24,22 @@ class AchievementsView: UIViewController {
     
     // Uses viewModel to fetch all data from services and populate view's objects
     fileprivate func fillTextLabelsAndViews() {
-        do {
-            try viewModel.setWithJSON(completion: { achievements in
-                DispatchQueue.main.async { [ weak self ] in
-                    self?.achievementsTextView.text = achievements.achievements
-                }
-            }, error: { failure in
-                self.handleError(failure)
-            })
-        } catch {
+        
+        let error: (Error) -> Void = { error in
             self.handleError(error)
         }
+        
+        let completion: (Achievements) -> Void = { achievements in
+            DispatchQueue.main.async { [ weak self ] in
+                self?.achievementsTextView.text = achievements.achievements
+            }
+        }
+        
+        do { try viewModel.setWithJSON(completion: completion, error: error)
+            self.viewModel.onErrorHandling = { error in
+                self.handleError(error)
+            }
+        }
+        catch { self.handleError(error) }
     }
 }
