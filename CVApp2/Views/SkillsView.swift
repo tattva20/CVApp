@@ -13,7 +13,7 @@ import UIKit
 
 class SkillsView: UIViewController {
     
-    private var viewModel = SkillsViewModel()
+    private let viewModel = SkillsViewModel()
     
     @IBOutlet weak var skillsTextView: UITextView!
     

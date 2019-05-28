@@ -13,7 +13,7 @@ import UIKit
 
 class SummaryView: UIViewController {
 
-    private var viewModel = SummaryViewModel()
+    private let viewModel = SummaryViewModel()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!

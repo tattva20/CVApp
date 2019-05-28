@@ -13,7 +13,7 @@ import UIKit
 
 class AchievementsView: UIViewController {
     
-    private var viewModel = AchievementsViewModel()
+    private let viewModel = AchievementsViewModel()
     
     @IBOutlet weak var achievementsTextView: UITextView!
     
@@ -37,6 +37,7 @@ class AchievementsView: UIViewController {
         
         viewModel.setWithJSON(completion: completion, error: error, service: .achievements)
         self.viewModel.dataFetchError = { error in
+            
             self.handleError(error)
         }
     }

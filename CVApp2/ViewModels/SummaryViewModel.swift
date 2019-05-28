@@ -11,6 +11,6 @@ import Foundation
 // MARK: - SummaryViewModel class
 // This class is the viewModel for the SummaryView it uses queryAPI to fetch the data, then it converts the data to JSON and returns it to the view in a closure.
 
-struct SummaryViewModel: ViewModelProtocol {
+class SummaryViewModel: ViewModelProtocol {
     var dataFetchError : ((Error) -> Void)?
 }
