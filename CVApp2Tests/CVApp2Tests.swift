@@ -28,7 +28,7 @@ class CVApp2Tests: XCTestCase {
             expectation.fulfill()
         }
         
-        QueryAPI.shared.setServiceURL(service: .summary)
+        QueryAPI.shared.setServiceURL(.summary)
         QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
     
@@ -43,7 +43,7 @@ class CVApp2Tests: XCTestCase {
             expectation.fulfill()
         }
         
-        QueryAPI.shared.setServiceURL(service: .skills)
+        QueryAPI.shared.setServiceURL(.skills)
         QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
     
@@ -58,7 +58,7 @@ class CVApp2Tests: XCTestCase {
             expectation.fulfill()
         }
         
-        QueryAPI.shared.setServiceURL(service: .workExperience)
+        QueryAPI.shared.setServiceURL(.workExperience)
         QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
     
@@ -73,7 +73,7 @@ class CVApp2Tests: XCTestCase {
             expectation.fulfill()
         }
         
-        QueryAPI.shared.setServiceURL(service: .achievements)
+        QueryAPI.shared.setServiceURL(.achievements)
         QueryAPI.shared.fetchData(failure: failClosure, completion: successClosure)
     }
 }

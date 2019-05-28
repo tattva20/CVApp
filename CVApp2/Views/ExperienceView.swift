@@ -59,7 +59,6 @@ class ExperienceView: UITableViewController {
         viewModel.setWithJSON(completion: completion, error: error)
         self.viewModel.dataFetchError = { error in
             self.handleError(error)
-        
         }
         
         return cell
