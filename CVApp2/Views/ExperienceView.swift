@@ -32,7 +32,7 @@ class ExperienceView: UITableViewController {
         super.viewDidLoad()
         configureViews()
     }
-    
+        
     func configureViews() {
         let error: (Error) -> Void = { error in
             self.handleError(error)
