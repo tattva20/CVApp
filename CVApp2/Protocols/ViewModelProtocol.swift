@@ -17,6 +17,7 @@ protocol ViewModelProtocol {
 }
 
 extension ViewModelProtocol {
+    
     func setWithJSON<T>(completion: @escaping (T) -> Void, error: @escaping (Error) -> Void, service: Services) where T : Decodable {
         let failure: (Error) -> Void = { error in
             self.dataFetchError?(error)
