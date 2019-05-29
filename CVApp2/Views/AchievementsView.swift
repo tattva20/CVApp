@@ -37,7 +37,6 @@ class AchievementsView: UIViewController {
         
         viewModel.setWithJSON(completion: completion, error: error, service: .achievements)
         self.viewModel.dataFetchError = { error in
-            
             self.handleError(error)
         }
     }

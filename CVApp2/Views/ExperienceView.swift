@@ -57,6 +57,7 @@ class ExperienceView: UITableViewController {
     
     // Uses viewModel to fetch all data from services and populate cells.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier") as! ExperienceViewCell
         
         cell.companyLabel.text = experiences[indexPath.row].company

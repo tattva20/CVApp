@@ -88,7 +88,7 @@ class CVApp2Tests: XCTestCase {
             print(person)
         }
         
-        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.setWithJSON(completion: completion, error: error, service: .summary)
         viewModel.dataFetchError = { error in
              XCTFail()
         }
@@ -105,7 +105,7 @@ class CVApp2Tests: XCTestCase {
             print(person)
         }
         
-        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.setWithJSON(completion: completion, error: error, service: .skills)
         viewModel.dataFetchError = { error in
             XCTFail()
         }
@@ -122,7 +122,7 @@ class CVApp2Tests: XCTestCase {
             print(person)
         }
         
-        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.setWithJSON(completion: completion, error: error, service: .workExperience)
         viewModel.dataFetchError = { error in
             XCTFail()
         }
@@ -139,7 +139,7 @@ class CVApp2Tests: XCTestCase {
             print(person)
         }
         
-        viewModel.setWithJSON(completion: completion, error: error)
+        viewModel.setWithJSON(completion: completion, error: error, service: .achievements)
         viewModel.dataFetchError = { error in
             XCTFail()
         }
