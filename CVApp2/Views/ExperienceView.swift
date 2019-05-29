@@ -26,14 +26,33 @@ class ExperienceViewCell: UITableViewCell {
 class ExperienceView: UITableViewController {
     
     private let viewModel = ExperienceViewModel()
+    var experiences: [Experience] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+        configureViews()
+    }
+    
+    func configureViews() {
+        let error: (Error) -> Void = { error in
+            self.handleError(error)
+        }
+        
+        let completion: ([Experience]) -> Void = { experiences in
+            DispatchQueue.main.async { [ weak self ] in
+                self?.experiences = experiences
+                self?.tableView.reloadData()
+            }
+        }
+        
+        viewModel.setWithJSON(completion: completion, error: error, service: .workExperience)
+        self.viewModel.dataFetchError = { error in
+            self.handleError(error)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return experiences.count
     }
     
     // Uses viewModel to fetch all data from services and populate cells.

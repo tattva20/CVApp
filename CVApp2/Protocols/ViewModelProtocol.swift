@@ -12,7 +12,7 @@ protocol ViewModelProtocol {
     
     var dataFetchError : ((Error) -> Void)? { get }
     
-    func setWithJSON<T: Decodable>(completion: @escaping (T) -> Void, error: @escaping (Error) -> Void, service: Services)  
+    func setWithJSON<T: Codable>(completion: @escaping (T) -> Void, error: @escaping (Error) -> Void, service: Services)  
 }
 
 extension ViewModelProtocol {
