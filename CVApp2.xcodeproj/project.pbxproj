@@ -27,6 +27,7 @@
 		6EDDBF0C229BB7CB0056B945 /* ExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDDBF0B229BB7CB0056B945 /* ExperienceView.swift */; };
 		6EDDBF0E229BCEA20056B945 /* AchievementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDDBF0D229BCEA20056B945 /* AchievementsViewModel.swift */; };
 		6EDDBF10229BE1200056B945 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDDBF0F229BE1200056B945 /* AchievementsView.swift */; };
+		6EEFCFC0229EE89B0040FBBE /* TableViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEFCFBF229EE89B0040FBBE /* TableViewModelProtocol.swift */; };
 		6EFFCBF2229DF5E800983CC9 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFFCBF1229DF5E800983CC9 /* ViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		6EDDBF0B229BB7CB0056B945 /* ExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceView.swift; sourceTree = "<group>"; };
 		6EDDBF0D229BCEA20056B945 /* AchievementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewModel.swift; sourceTree = "<group>"; };
 		6EDDBF0F229BE1200056B945 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
+		6EEFCFBF229EE89B0040FBBE /* TableViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModelProtocol.swift; sourceTree = "<group>"; };
 		6EFFCBF1229DF5E800983CC9 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 			children = (
 				6ECF4FE3229D84D600C3CBD5 /* ViewProtocol.swift */,
 				6EFFCBF1229DF5E800983CC9 /* ViewModelProtocol.swift */,
+				6EEFCFBF229EE89B0040FBBE /* TableViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				6EDDBF06229BB4480056B945 /* SkillsViewModel.swift in Sources */,
 				6EDDBF0C229BB7CB0056B945 /* ExperienceView.swift in Sources */,
 				6EDDBF0E229BCEA20056B945 /* AchievementsViewModel.swift in Sources */,
+				6EEFCFC0229EE89B0040FBBE /* TableViewModelProtocol.swift in Sources */,
 				6EDDBF08229BB4E80056B945 /* SkillsView.swift in Sources */,
 				6ECCF012229B56CD00A1585E /* AchievementsModel.swift in Sources */,
 				6ECCF00C229B562700A1585E /* PersonModel.swift in Sources */,

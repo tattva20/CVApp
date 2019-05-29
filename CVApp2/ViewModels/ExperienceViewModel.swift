@@ -12,7 +12,11 @@ import Foundation
 // This class is the viewModel for the ExperienceView it uses queryAPI to fetch the data, then it converts the data to JSON and returns it to the view in a closure.
 
 class ExperienceViewModel {
+    
     var dataFetchError : ((Error) -> Void)?
+}
+
+extension ExperienceViewModel: TableViewModelProtocol {
     
     func setWithJSON(completion: @escaping ([Experience]) -> Void, error: @escaping (Error) -> Void, service: Services) {
         let failure: (Error) -> Void = { error in

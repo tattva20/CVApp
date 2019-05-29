@@ -59,26 +59,13 @@ class ExperienceView: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier") as! ExperienceViewCell
         
-        let error: (Error) -> Void = { error in
-            self.handleError(error)
-        }
-        
-        let completion: ([Experience]) -> Void = { experiences in
-            DispatchQueue.main.async { [ weak cell ] in
-                cell?.companyLabel.text = experiences[indexPath.row].company
-                cell?.positionLabel.text = experiences[indexPath.row].position
-                cell?.websiteLabel.text = experiences[indexPath.row].website
-                cell?.startDateLabel.text = experiences[indexPath.row].startDate
-                cell?.endDateLabel.text = experiences[indexPath.row].endDate
-                cell?.summaryTextView.text = experiences[indexPath.row].summary
-                cell?.highLightsTextView.text = experiences[indexPath.row].highlights
-            }
-        }
-        
-        viewModel.setWithJSON(completion: completion, error: error, service: .workExperience)
-        self.viewModel.dataFetchError = { error in
-            self.handleError(error)
-        }
+        cell.companyLabel.text = experiences[indexPath.row].company
+        cell.positionLabel.text = experiences[indexPath.row].position
+        cell.websiteLabel.text = experiences[indexPath.row].website
+        cell.startDateLabel.text = experiences[indexPath.row].startDate
+        cell.endDateLabel.text = experiences[indexPath.row].endDate
+        cell.summaryTextView.text = experiences[indexPath.row].summary
+        cell.highLightsTextView.text = experiences[indexPath.row].highlights
         
         return cell
     }

@@ -44,7 +44,6 @@ final class QueryAPI {
     var dataTask: URLSessionDataTask?
     private(set)var endPoint: URL?
     
-    
     // Sets the correct url for the desired service
     func setServiceURL(_ service: Services) {
 

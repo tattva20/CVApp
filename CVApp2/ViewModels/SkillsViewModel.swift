@@ -12,6 +12,7 @@ import Foundation
 // This class is the viewModel for the SkillsView it uses queryAPI to the fetch data, then it converts the data to JSON and returns it to the view in a closure.
 
 class SkillsViewModel: ViewModelProtocol {
+    
     var dataFetchError : ((Error) -> Void)?
     
 }
