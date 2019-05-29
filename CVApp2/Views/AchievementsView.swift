@@ -24,7 +24,6 @@ class AchievementsView: UIViewController {
     
     // Uses viewModel to fetch all data from services and populate view's objects
     fileprivate func fillTextLabelsAndViews() {
-        
         let error: (Error) -> Void = { error in
             self.handleError(error)
         }

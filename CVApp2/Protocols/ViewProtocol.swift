@@ -12,6 +12,7 @@ import UIKit
 protocol ViewProtocol {
     
     func handleError(_ error: Error)
+    
 }
 
 extension UIViewController: ViewProtocol {

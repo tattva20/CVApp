@@ -12,5 +12,7 @@ import Foundation
 // This class contains the Skills model used by the SkillsViewModel to decode it's data from JSON.
 
 struct Skills: Codable {
+    
     let skills: String
+    
 }

@@ -12,5 +12,7 @@ import Foundation
 // This class contains the Experience model used by the ExperienceViewModel to decode it's data from JSON.
 
 struct Experience: Codable {
+    
     let company, position, website, startDate, endDate, summary, highlights: String
+    
 }

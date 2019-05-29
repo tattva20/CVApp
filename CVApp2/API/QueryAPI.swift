@@ -46,7 +46,6 @@ final class QueryAPI {
     
     // Sets the correct url for the desired service
     func setServiceURL(_ service: Services) {
-
         switch service {
         case .summary:
             guard let string = self.plist?[Endpoints().summary] as? String,
@@ -77,7 +76,6 @@ final class QueryAPI {
     
     // Fetches data for viewmodels and returns it as a closure
     func fetchData(failure: @escaping (Error) -> (), completion: @escaping (Data) -> ()) {
-        
         guard let url = self.endPoint else {
             return
         }

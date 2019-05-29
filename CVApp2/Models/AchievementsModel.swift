@@ -12,5 +12,7 @@ import Foundation
 // This class contains the Achievements model used by the AchievementsViewModel to decode it's data from JSON.
 
 struct Achievements: Codable {
+    
     let achievements: String
+    
 }

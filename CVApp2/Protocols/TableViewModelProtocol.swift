@@ -11,4 +11,5 @@ import Foundation
 protocol TableViewModelProtocol {
     
     func setWithJSON(completion: @escaping ([Experience]) -> Void, error: @escaping (Error) -> Void, service: Services)
+    
 }
