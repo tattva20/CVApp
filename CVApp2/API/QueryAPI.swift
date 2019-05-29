@@ -50,27 +50,30 @@ final class QueryAPI {
     
     // Sets the correct url for the desired service
     func setServiceURL(_ service: Services) {
+        
+        let endpoints = Endpoints()
+        
         switch service {
         case .summary:
-            guard let string = self.plist?[Endpoints().summary] as? String,
+            guard let string = self.plist?[endpoints.summary] as? String,
                 let url = URL(string: string) else {
                 return
             }
             endPoint = url
         case .workExperience:
-            guard let string = self.plist?[Endpoints().workExperience] as? String,
+            guard let string = self.plist?[endpoints.workExperience] as? String,
                   let url = URL(string: string) else {
                 return
             }
             endPoint = url
         case .skills:
-            guard let string = self.plist?[Endpoints().skillsEndpoint] as? String,
+            guard let string = self.plist?[endpoints.skillsEndpoint] as? String,
                 let url = URL(string: string) else {
                     return
             }
             endPoint = url
         case .achievements:
-            guard let string = self.plist?[Endpoints().achievementsEndpoint] as? String,
+            guard let string = self.plist?[endpoints.achievementsEndpoint] as? String,
                 let url = URL(string: string) else {
                     return
             }
