@@ -10,18 +10,22 @@ import Foundation
 
 // MARK: - ServiceEndPoints
 private struct Endpoints {
+    
     let summary = "SummaryURL"
     let workExperience = "ExperienceURL"
     let skillsEndpoint = "SkillsURL"
     let achievementsEndpoint = "AchievementsURL"
+    
 }
 
 // MARK: - Servicestypes
 public enum Services {
+    
     case summary
     case workExperience
     case skills
     case achievements
+    
 }
 
 // MARK: - QueryAPI class
