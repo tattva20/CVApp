@@ -31,13 +31,13 @@ public enum Services {
 // MARK: - QueryAPI class
 // This singleton will fetch the data from the desired services endPoint and return it as a closure for the viewModels.
 
-struct QueryAPI {
+final class QueryAPI {
     
     // MARK: - Attributes
     private var plist: [AnyHashable: Any]?
     
     // MARK: - Singleton stuff
-    static var shared = QueryAPI()
+    static let shared = QueryAPI()
     
     private init () {
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
@@ -49,7 +49,7 @@ struct QueryAPI {
     private(set)var endPoint: URL?
     
     // Sets the correct url for the desired service
-    mutating func setServiceURL(_ service: Services) {
+    func setServiceURL(_ service: Services) {
         
         let endpoints = Endpoints()
         
