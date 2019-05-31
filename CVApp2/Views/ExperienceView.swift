@@ -25,15 +25,15 @@ class ExperienceViewCell: UITableViewCell {
 
 class ExperienceView: UITableViewController {
     
-    private let viewModel = ExperienceViewModel()
+    private var viewModel = ExperienceViewModel()
     var experiences: [Experience] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViews()
+        fillCellsTextLabelsAndViews()
     }
         
-    func configureViews() {
+    func fillCellsTextLabelsAndViews() {
         let error: (Error) -> Void = { error in
             self.handleError(error)
         }
